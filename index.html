@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>PressPage.TV</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="displayheight" content="31, 60, 90, 125, 250, 400, 600" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <style>
+            @font-face {
+                font-family: OldEnglish;
+                src: url('OLDENGL.TTF') format('truetype');
+            }
+            h2 {
+                font-family: OldEnglish;
+            }
+            .tableFixHead thead th {
+                position: sticky;
+                top: 0;
+            }
+            table.fixed { 
+                table-layout:fixed; 
+            }
+            table.fixed td { 
+                overflow: hidden; 
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th,
+            td {
+                padding: 8px 16px;
+                border: 1px solid #ccc;
+            }
+            th {
+                background: #eee;
+            }
+            .header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }            
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+            }  
+            /* default height */
+            #ad {
+                height:60px;
+            }
+            @media only screen and (height:90px) {
+                /* 90 pixels high */
+                #ad {
+                    height:90px;
+                }
+            }
+            @media only screen and (height:125px) {
+                /* 125 pixels high */
+                #ad {
+                    height:125px;
+                }
+            }                      
+        </style>        
+    </head>
+    <body>
+        <div class="w3-container">
+            <h2 class="oldenglish w3-center">PRESSPAGE.TV</h2>
+            <h3 class="w3-center oldenglish tagline" id="subtitle"></h3>
+            <div class="tableFixHead">
+                <table>
+                    <tr>
+                        <td style="width:70%;">
+                        <video 
+                            id="video_element" 
+                            subtitle=""
+                            description=" "
+                            controls
+                            autoplay 
+                            height="400" 
+                            class="w3-block"
+                            onended="window.location.reload();">
+                            <source 
+                                id="video_source" 
+                                src="" 
+                                type="video/mp4" />
+                                Your browser does not support HTML5 video.
+                        </video>
+                        </td>
+                        <td style="width:30%;">
+                        <div id="ad" style="width:100%;height:90px;">
+                            <div class="w3-center w3-large"><b>Your AD here?</b><br/>Contact: <a href="mailto:presspage.entertainment@gmail.com?subject=Request%20to%20advertise%20on%20PRESSPAGE.TV" target="_blank">presspage.entertainment@gmail.com</a></div>
+                        </div>                        
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tableFixHead">
+                <table>
+                    <thead>
+                        <tr><th class="w3-center" colspan="13">November 14, 2026</th></tr>
+                    </thead>
+                </table>
+            </div>
+            <br/><br/>
+            <h2 class="footer w3-small w3-light-grey">&copy; 2020-<span id="year"></span> by 
+                <a href="https://presspage.info" target="_blank" style="text-decoration:none;">PressPage Entertainment Inc.</a> All rights reserved.&nbsp;
+                <a href="#" onclick="document.getElementById('about-dialog').style.display='block';">About &amp; Contact</a>&nbsp;|&nbsp;
+                <a href="https://privacy-policy.page" target="_blank">Privacy Policy</a>&nbsp;|&nbsp;
+                <a href="https://terms-of-service.page" target="_blank">Terms of Service</a>
+            </h2>
+        </div>
+        <!-- ABOUT DIALOG -->
+        <div id="about-dialog" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom">
+                <div class="w3-container">
+                    <h2 class="w3-light-grey" id="about-dialog-title">
+                        About PressPage TV
+                    </h2>
+
+                    <h3>News for You!</h3>
+
+                    <p>
+                        PressPage TV is an independently operated digital news
+                        broadcasting platform powered by the PressPage Robot Journalist.
+                    </p>
+
+                    <p>
+                        Our mission is to make news accessible through automated
+                        journalism, multimedia storytelling, and continuous digital
+                        distribution.
+                    </p>
+
+                    <p>
+                        News stories are researched, processed, and transformed into
+                        multimedia broadcasts for convenient viewing and listening.
+                        Our publishing model also supports advance scheduling and
+                        syndication licensing.
+                    </p>
+
+                    <h4>Our Publishing Network</h4>
+
+                    <ul>
+                        <li>PressPage News - Digital news publishing.</li>
+                        <li>PressPage TV - Video news broadcasting.</li>
+                        <li>Robot Journalist - Automated news production.</li>
+                        <li>Apple Podcasts - Audio distribution.</li>
+                    </ul>
+
+                    <h4>Contact &amp; Licensing</h4>
+
+                    <p>
+                        For editorial inquiries, syndication licensing, distribution
+                        partnerships, or business opportunities, please visit:
+                    </p>
+
+                    <p>
+                        <a href="https://presspage.news" target="_blank">
+                            PressPage.news
+                        </a>
+                    </p>
+
+                    <p>
+                        <a href="https://presspage.tv" target="_blank">
+                            PressPage.tv
+                        </a>
+                    </p>
+
+                    <p class="w3-small w3-text-grey">
+                        PressPage Entertainment Inc.
+                        <br />
+                        Independent digital publishing and media production.
+                    </p>
+
+                    <br />
+
+                    <button class="w3-button w3-block w3-black"
+                        onclick="document.getElementById('about-dialog').style.display='none';">
+                        OK
+                    </button>
+
+                    <br />
+                </div>
+            </div>
+        </div>
+        <!-- JAVASCRIPT -->
+        <script>
+            var loaded_time = new Date().getTime();
+
+            window.onload = async function() {
+                document.getElementById("year").innerHTML = new Date().getFullYear();
+
+                var video_source = document.getElementById("video_source");
+                var video_element = document.getElementById("video_element");
+
+                try {
+                    const response = await fetch("session.json");
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error: ${response.status}`);
+                    }
+
+                    const session = await response.json();
+
+                    console.log(session);
+
+                    document.getElementById("subtitle").innerHTML = session.subtitle;
+
+                    video_source.src = session.mp4 + "?v=" + Date.now();
+                    video_element.setAttribute("subtitle", session.subtitle);
+                    video_element.setAttribute("description", session.description);
+                    video_element.muted = true;
+                    video_element.load();
+
+                    await video_element.play();
+
+                } catch (error) {
+                    console.error("Unable to load video session:", error);
+                }
+                //if (start_pos > video.duration) {
+                //    start_pos -= video.duration; 
+                //}
+                //video.pause();
+                //video.currentTime = start_pos;
+                //video.play();
+                //setInterval(refresh, 10000);
+            }
+
+        </script>        
+    </body>
+</html>
